@@ -1,0 +1,1419 @@
+Username:vipa
+Password:
+
+AGG0002SRT02#end
+Translating "end"
+
+Translating "end"
+
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#write
+Building configuration...
+[OK]
+AGG0002SRT02#terminal length 0
+AGG0002SRT02#show  running-config
+Building configuration...
+
+Current configuration : 38990 bytes
+!
+! Last configuration change at 12:50:13 Hanoi Sun Jul 21 2024 by vipa
+! NVRAM config last updated at 00:06:21 Hanoi Sat Oct 26 2024 by vipa
+!
+version 15.4
+service tcp-keepalives-in
+service tcp-keepalives-out
+service timestamps debug datetime msec
+service timestamps log datetime msec localtime
+service password-encryption
+service internal
+service unsupported-transceiver
+asr901-platf-multi-nni-cfm
+!
+hostname AGG0002SRT02
+!
+boot-start-marker
+boot system flash asr901-universalk9-mz-eng-sp-154-3S4V2
+boot-end-marker
+!
+!
+card type e1 0 0
+logging buffered 809600
+enable password 7 13131E171F180126
+!
+aaa new-model
+!
+!
+aaa group server tacacs+ metro-tacacs
+ server-private 10.73.224.140 key 7 11041C11051D180907382E30
+ ip vrf forwarding NMS
+!
+aaa group server tacacs+ kv3_2019
+ server-private 10.73.66.63 key 7 122D251432081F567A7976
+ ip vrf forwarding NMS
+!
+aaa group server tacacs+ kv1_2019
+ server-private 10.60.60.88 key 7 03307B08260C321E1E5B4B
+ ip vrf forwarding NMS
+!
+aaa authentication login default group kv3_2019 group kv1_2019 local
+aaa authorization config-commands
+aaa authorization commands 15 default group kv3_2019 group kv1_2019 local if-authenticated 
+!
+!
+!
+!
+!
+aaa session-id common
+clock timezone Hanoi 7 0
+errdisable recovery cause oam-remote-failure critical-event
+errdisable recovery interval 10800
+ip cef
+!
+ip vrf 3G
+ rd 7552:201
+ route-target export 7552:202
+ route-target export 7552:3328
+ route-target import 7552:201
+ route-target import 7552:3329
+!
+ip vrf BIDV_AGG
+ rd 7552:52803
+ route-target export 7552:52803
+ route-target import 7552:52803
+!
+ip vrf L3VPN_AC_BANK
+ rd 7552:20544
+ route-target export 7552:20544
+ route-target import 7552:20544
+!
+ip vrf NMS
+ rd 7552:3302
+ route-target export 7552:3302
+ route-target import 7552:3302
+ route-target import 7552:3319
+!
+ip vrf VOD
+ rd 7552:401
+ route-target export 7552:401
+ route-target import 7552:401
+!
+ip vrf VPN_MEKONG_BANK
+ rd 7552:20503
+ route-target export 7552:20503
+ route-target import 7552:20503
+!
+ip vrf VRF_4G_OAM
+ rd 7552:3321
+ route-target export 7552:3323
+ route-target import 7552:3322
+!
+ip vrf VRF_4G_Service
+ rd 7552:63
+ route-target export 7552:65
+ route-target import 7552:64
+!
+ip vrf VRF_NMS_SWL2_DSLAM
+ rd 7552:3303
+ route-target export 7552:3303
+ route-target import 7552:3303
+ route-target import 7552:3323
+!
+ip vrf VRF_SMARTCABINET
+ rd 7552:3311
+ route-target export 7552:3
+ route-target import 7552:3
+!
+ip vrf VRF_VOD_MSN
+ rd 7552:1041
+ route-target export 7552:1078
+ route-target import 7552:1041
+ route-target import 7552:1058
+ route-target import 7552:7016
+ route-target import 7552:7014
+!
+ip vrf own_tntechctcp1
+ rd 7552:52503
+ route-target export 7552:52503
+ route-target import 7552:52503
+!
+!
+!
+!
+no ip domain lookup
+
+ip multicast-routing 
+ip multicast-routing vrf VOD 
+ip multicast-routing vrf VRF_VOD_MSN 
+ip igmp vrf VOD ssm-map enable
+no ip igmp vrf VOD ssm-map query dns
+ip igmp vrf VOD ssm-map static SSM_RANGE 10.63.2.10
+ip igmp vrf VOD ssm-map static SSM_RANGE 10.63.2.11
+ip igmp vrf VOD ssm-map static SSM_RANGE 10.63.2.12
+ip igmp vrf VRF_VOD_MSN ssm-map enable
+no ip igmp vrf VRF_VOD_MSN ssm-map query dns
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_10.63.1.6 10.63.1.6
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_10.63.1.9 10.63.1.9
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_10.63.1.12 10.63.1.12
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE 10.63.2.10
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE 10.63.2.11
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE 10.63.2.12
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.6.102 172.23.6.102
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.6.105 172.23.6.105
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.6.134 172.23.6.134
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.50.3 172.23.50.3
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.50.4 172.23.50.4
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.50.5 172.23.50.5
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.51.3 172.23.51.3
+ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.51.4 172.23.51.4
+ip igmp ssm-map enable
+no ip igmp ssm-map query dns
+ip igmp ssm-map static SSM_RANGE 10.63.2.10
+ip igmp ssm-map static SSM_RANGE 10.63.2.11
+ip igmp ssm-map static SSM_RANGE 10.63.2.12
+ipv6 unicast-routing
+ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+mpls label mode all-vrfs protocol bgp-vpnv4 per-vrf
+mpls label protocol ldp
+no mpls ip propagate-ttl 
+mpls ldp explicit-null
+mpls ldp graceful-restart
+mpls ldp session protection
+mpls ldp igp sync holddown 2000
+mpls ldp label
+ allocate global host-routes
+mpls ldp discovery targeted-hello accept
+mpls ldp discovery quick-start
+multilink bundle-name authenticated
+!
+table-map CPU
+ map from  0 to 6
+ map from  1 to 6
+ map from  2 to 6
+ map from  3 to 6
+ map from  4 to 6
+ map from  5 to 6
+ map from  6 to 6
+ map from  7 to 7
+ default copy
+!
+no l3-over-l2 flush buffers
+asr901-platf-multicast enable
+asr901-platf-frr enable
+asr901-storm-control-bpdu 1000
+!
+!
+archive
+ log config
+  logging enable
+spanning-tree mode pvst
+spanning-tree extend system-id
+license udi pid A901-6CZ-FT-D sn CAT2050U1KB
+license boot level AdvancedMetroIPAccess
+username viettel privilege 15 secret 5 $1$jihJ$HhqKfWtDBYKFqaoNUVib0/
+username ktkv3 privilege 15 secret 5 $1$ogIA$kzVm4cxrQu1lm3q..QEnw/
+!
+controller E1 0/0
+ framing unframed 
+ description 2G_AGG002
+ cem-group 0 unframed
+!
+controller E1 0/1
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/2
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/3
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/4
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/5
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/6
+ forward-alarm ais
+ forward-alarm rai
+!
+controller E1 0/7
+ forward-alarm ais
+ forward-alarm rai
+!
+!
+ip tcp path-mtu-discovery
+lldp run
+!
+class-map match-all 4G_DEMAND
+ match dscp af31  af32 
+class-map match-any TRUST4
+ match mpls experimental topmost 4 
+ match dscp cs4  af41  af42  af43 
+ match cos  4 
+class-map match-any TRUST5
+ match mpls experimental topmost 5 
+ match dscp ef 
+ match cos  5 
+class-map match-any TRUST6
+ match mpls experimental topmost 6 
+ match dscp cs6 
+ match cos  6 
+class-map match-all TRUST7
+ match mpls experimental topmost 7 
+ match dscp cs7 
+ match cos  7 
+class-map match-any TRUST1
+ match mpls experimental topmost 1 
+ match dscp cs1  af11  af12  af13 
+ match cos  1 
+class-map match-any TRUST2
+ match mpls experimental topmost 2 
+ match dscp cs2  af21  af22  af23 
+ match cos  2 
+class-map match-any TRUST3
+ match mpls experimental topmost 3 
+ match dscp cs3  af31  af32  af33 
+ match cos  3 
+class-map match-all 4G_SIG
+ match dscp cs6 
+class-map match-all EXP5
+ match qos-group 5
+class-map match-all EXP4
+ match qos-group 4
+class-map match-all EXP7
+ match qos-group 7
+class-map match-all 4G_VOICE
+ match dscp af42  ef 
+class-map match-all EXP6
+ match qos-group 6
+class-map match-all EXP1
+ match qos-group 1
+class-map match-all 3G_VOICE
+ match dscp ef  cs6 
+class-map match-all EXP3
+ match qos-group 3
+class-map match-all EXP2
+ match qos-group 2
+!
+policy-map Trust_Ingress
+ class TRUST6
+  set qos-group 6
+ class TRUST5
+  set qos-group 5
+ class TRUST4
+  set qos-group 4
+ class TRUST3
+  set qos-group 3
+ class TRUST2
+  set qos-group 2
+ class TRUST1
+  set qos-group 1
+policy-map VPN_L3_Ingress
+ class class-default
+  set mpls experimental imposition 3
+  set qos-group 3
+policy-map TDM-Ingress
+ class class-default
+  set mpls experimental imposition 6
+  set qos-group 6
+policy-map VOD_Ingress
+ class class-default
+  set mpls experimental imposition 3
+  set qos-group 3
+policy-map VPN-L2-Ingress
+ class class-default
+  set mpls experimental imposition 3
+  set qos-group 3
+policy-map 4G_OAM
+ class class-default
+  set qos-group 5
+policy-map 4G_Ingress
+ class 4G_SIG
+  set qos-group 6
+ class 4G_VOICE
+  set qos-group 5
+ class 4G_DEMAND
+  set qos-group 3
+ class class-default
+  set qos-group 2
+policy-map Queuing_Egress
+ class EXP6
+  priority percent 30
+ class EXP5
+  priority percent 70
+ class EXP4
+  bandwidth remaining percent 33 
+ class EXP3
+  bandwidth remaining percent 26 
+ class EXP2
+  bandwidth remaining percent 20 
+ class EXP1
+  bandwidth remaining percent 13 
+ class class-default
+  bandwidth remaining percent 8 
+  random-detect discard-class-based
+  random-detect discard-class 0 600 1024 1
+policy-map HSI_Ingress
+ class class-default
+  set mpls experimental topmost 0
+  set mpls experimental imposition 0
+policy-map PQ2_Ingress
+ description VoIP, CTH, BTV, VPN VIP
+ class class-default
+  set mpls experimental imposition 5
+  set qos-group 5
+policy-map 3G_Ingress
+ class 3G_VOICE
+  set mpls experimental imposition 6
+  set qos-group 6
+ class class-default
+  set mpls experimental imposition 5
+  set qos-group 5
+policy-map OAM-Ingress
+ class class-default
+  set qos-group 3
+policy-map VPN_L2_Ingress
+ class class-default
+  set mpls experimental topmost 3
+  set qos-group 3
+policy-map OAM_Ingress
+ class class-default
+  set mpls experimental imposition 3
+  set qos-group 3
+!
+pseudowire-class TDM-PW
+ encapsulation mpls
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface Loopback0
+ description Loopback_for_Routing
+ ip address 10.217.96.17 255.255.255.255
+!
+interface Loopback1
+ description NMS
+ ip vrf forwarding NMS
+ ip address 10.217.104.17 255.255.255.255
+ ip verify unicast source reachable-via any
+!
+interface Loopback2
+ description PTP
+ ip address 10.217.112.17 255.255.255.255
+!
+interface GigabitEthernet0/0
+ description 3AG002
+ no ip address
+ speed 100
+ no negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+ service instance 2652 ethernet
+  encapsulation untagged
+  service-policy input 3G_Ingress
+  bridge-domain 2652 split-horizon group 0
+ !
+!
+interface GigabitEthernet0/1
+ description AGG0002_DC3
+ no ip address
+ speed 100
+ no negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+ service instance 71 ethernet
+  encapsulation untagged
+  service-policy input OAM_Ingress
+  bridge-domain 71 split-horizon group 0
+ !
+!
+interface GigabitEthernet0/2
+ description AGG0002_DC2
+ no ip address
+ speed 100
+ no negotiation auto
+ service instance 71 ethernet
+  encapsulation untagged
+  service-policy input OAM_Ingress
+  bridge-domain 71 split-horizon group 0
+ !
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet0/4
+ description eAG00002
+ mtu 9000
+ no ip address
+ load-interval 30
+ media-type sfp
+ no negotiation auto
+ storm-control broadcast level pps 10
+ storm-control multicast level pps 10
+ storm-control unicast level pps 10
+ qos-config scheduling-mode min-bw-guarantee
+ no keepalive
+ service-policy output Queuing_Egress
+ service instance 2636 ethernet
+  encapsulation dot1q 2636
+  rewrite ingress tag pop 1 symmetric
+  service-policy input 4G_Ingress
+  bridge-domain 2636 split-horizon group 0
+ !
+ service instance 2637 ethernet
+  encapsulation dot1q 2637
+  rewrite ingress tag pop 1 symmetric
+  service-policy input 4G_OAM
+  bridge-domain 2637 split-horizon group 0
+ !
+!
+interface GigabitEthernet0/5
+ description AGG0002SW01_10.239.224.17
+ mtu 9000
+ no ip address
+ load-interval 30
+ media-type sfp
+ no negotiation auto
+ storm-control broadcast level pps 100
+ storm-control multicast level pps 100
+ storm-control unicast level pps 100
+ service instance 35 ethernet
+  description DYNAMIC_GPON
+  encapsulation dot1q 35
+  service-policy input HSI_Ingress
+  xconnect 10.217.127.4 20997001 encapsulation mpls
+   backup peer 10.217.127.3 20997002
+   backup delay 0 120
+   mtu 9000
+ !
+ service instance 36 ethernet
+  description VOD
+  encapsulation dot1q 36
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VOD_Ingress
+  bridge-domain 36 split-horizon group 0
+ !
+ service instance 37 ethernet
+  description VIETTEL_OFFICE
+  encapsulation dot1q 37
+  rewrite ingress tag pop 1 symmetric
+  service-policy input HSI_Ingress
+  xconnect 10.217.127.4 20997601 encapsulation mpls
+   backup peer 10.217.127.3 20997602
+   backup delay 0 120
+   mtu 9000
+ !
+ service instance 73 ethernet
+  description NMS_DSLAM
+  encapsulation dot1q 73
+  rewrite ingress tag pop 1 symmetric
+  service-policy input OAM-Ingress
+  bridge-domain 73 split-horizon group 0
+ !
+ service instance 335 ethernet
+  description IP_PHONE
+  encapsulation dot1q 335
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PQ2_Ingress
+  xconnect 10.217.127.4 20997401 encapsulation mpls
+   backup peer 10.217.127.3 20997402
+   backup delay 0 120
+   mtu 9000
+ !
+ service instance 2214 ethernet
+  description t008_ow_mdb_uplinkagg
+  encapsulation dot1q 2214
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN_L3_Ingress
+  bridge-domain 2214 split-horizon group 0
+ !
+ service instance 2216 ethernet
+  description a076_o_134
+  encapsulation dot1q 2216
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN_L3_Ingress
+  bridge-domain 2216 split-horizon group 0
+ !
+ service instance 2306 ethernet
+  description h004_o_nh_bidv_longan
+  encapsulation dot1q 2306
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN_L3_Ingress
+  bridge-domain 2306 split-horizon group 0
+ !
+ service instance 2451 ethernet
+  description t008_o_mdb_2_AGG0002
+  encapsulation dot1q 2451
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN_L3_Ingress
+  bridge-domain 2451 split-horizon group 0
+ !
+ service instance 2502 ethernet
+  description MULTISCREEN
+  encapsulation dot1q 2502
+  rewrite ingress tag pop 1 symmetric
+  service-policy input PQ2_Ingress
+  bridge-domain 2502 split-horizon group 0
+ !
+ service instance 3101 ethernet
+  description mwn_giangvca1
+  encapsulation dot1q 3101
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN-L2-Ingress
+  xconnect 10.217.127.4 1421646 encapsulation mpls
+   backup peer 10.217.127.3 1421646
+   backup delay 0 120
+   mtu 9000
+ !
+ service instance 3455 ethernet
+  description a076_mw_namnhtctv
+  encapsulation dot1q 3455
+  rewrite ingress tag pop 1 symmetric
+  service-policy input VPN-L2-Ingress
+  xconnect 10.217.127.4 1421647 encapsulation mpls
+   backup peer 10.217.127.3 1421647
+   backup delay 0 120
+   mtu 9000
+ !
+!
+interface GigabitEthernet0/6
+ no ip address
+ shutdown
+ media-type auto-select
+ negotiation auto
+!
+interface GigabitEthernet0/7
+ no ip address
+ media-type auto-select
+ negotiation auto
+!
+interface GigabitEthernet0/8
+ no ip address
+ negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+!
+interface GigabitEthernet0/9
+ no ip address
+ negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+!
+interface GigabitEthernet0/10
+ no ip address
+ negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+!
+interface GigabitEthernet0/11
+ no ip address
+ negotiation auto
+ qos-config scheduling-mode min-bw-guarantee
+!
+interface TenGigabitEthernet0/0
+ description AGG0666SRT03_Te0/1
+ mtu 9000
+ no ip address
+ load-interval 30
+ carrier-delay msec 0
+ qos-config scheduling-mode min-bw-guarantee
+ ethernet oam link-monitor receive-crc window 50
+ ethernet oam link-monitor receive-crc threshold high 250
+ ethernet oam link-monitor transmit-crc window 50
+ ethernet oam link-monitor transmit-crc threshold high 250
+ ethernet oam link-monitor high-threshold action error-disable-interface
+ ethernet oam
+ service-policy input Trust_Ingress
+ service-policy output Queuing_Egress
+ service instance 100 ethernet
+  encapsulation untagged
+  bridge-domain 100
+ !
+!
+interface TenGigabitEthernet0/1
+ description To_AGG8002AGG02
+ mtu 9000
+ no ip address
+ load-interval 30
+ carrier-delay msec 0
+ qos-config scheduling-mode min-bw-guarantee
+ ethernet oam link-monitor receive-crc window 50
+ ethernet oam link-monitor receive-crc threshold high 250
+ ethernet oam link-monitor transmit-crc window 50
+ ethernet oam link-monitor transmit-crc threshold high 250
+ ethernet oam link-monitor high-threshold action error-disable-interface
+ ethernet oam
+ service-policy input Trust_Ingress
+ service-policy output Queuing_Egress
+ service instance 200 ethernet
+  encapsulation untagged
+  bridge-domain 200
+ !
+!
+interface CEM0/0
+ description 2G_AGG002
+ no ip address
+ cem 0
+  service-policy input TDM-Ingress
+  dejitter-buffer 8
+  xconnect 10.242.131.1 30004318 encapsulation mpls pw-class TDM-PW
+   backup peer 10.242.131.2 30004318 pw-class TDM-PW
+ !
+!
+interface FastEthernet0/0
+ no ip address
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan71
+ description AGG0002_DC3
+ ip vrf forwarding VRF_SMARTCABINET
+ ip address 10.234.111.6 255.255.255.252 secondary
+ ip address 10.234.102.58 255.255.255.252
+ ip verify unicast source reachable-via any
+!
+interface Vlan73
+ description NMS_DSLAM
+ ip vrf forwarding VRF_NMS_SWL2_DSLAM
+ ip address 10.239.224.22 255.255.255.248
+ ip verify unicast source reachable-via any
+!
+interface Vlan100
+ description AGG0666SRT03_Vlan200
+ dampening 30 750 2000 120
+ mtu 9000
+ ip address 10.217.64.74 255.255.255.252
+ ip pim sparse-mode
+ ip pim bfd
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 0312520E121B24406E041C11051D
+ ip ospf network point-to-point
+ ip ospf cost 100
+ carrier-delay 0
+ mpls ip
+ mpls ldp igp sync delay 25
+ bfd interval 100 min_rx 100 multiplier 3
+ no bfd echo
+!
+interface Vlan200
+ dampening 30 750 2000 120
+ mtu 9000
+ ip address 10.217.64.77 255.255.255.252
+ ip pim sparse-mode
+ ip pim bfd
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 7 1058001C110317072C092F3F3627
+ ip ospf network point-to-point
+ ip ospf cost 100
+ carrier-delay 0
+ mpls ip
+ mpls ldp igp sync delay 25
+ bfd interval 100 min_rx 100 multiplier 3
+ no bfd echo
+!
+interface Vlan2214
+ description t008_ow_mdb_uplinkagg
+ ip vrf forwarding VPN_MEKONG_BANK
+ ip address 10.17.0.81 255.255.255.252
+ ip verify unicast source reachable-via any
+!
+interface Vlan2216
+ description a076_o_134
+ ip vrf forwarding L3VPN_AC_BANK
+ ip address 172.16.35.5 255.255.255.252
+ ip verify unicast source reachable-via any
+!
+interface Vlan2306
+ description h004_o_nh_bidv_longan
+ mtu 9000
+ ip vrf forwarding BIDV_AGG
+ ip address 172.31.137.9 255.255.255.248
+ ip verify unicast source reachable-via any
+!
+interface Vlan2451
+ description t008_o_mdb_2_AGG0002
+ ip vrf forwarding own_tntechctcp1
+ ip address 172.31.177.65 255.255.255.252
+ ip verify unicast source reachable-via any
+!
+interface Vlan2502
+ description MULTISCREEN
+ ip vrf forwarding VRF_VOD_MSN
+ ip address 10.214.164.126 255.255.255.192
+ ip helper-address 172.23.75.8
+ ip helper-address 172.23.75.9
+ ip verify unicast source reachable-via any
+ ip pim passive
+!
+interface Vlan2503
+ ip vrf forwarding VRF_VOD_MSN
+ ip address 100.115.11.254 255.255.255.0
+ ip verify unicast source reachable-via any
+ shutdown
+!
+interface Vlan2636
+ description eAG00002
+ ip vrf forwarding VRF_4G_Service
+ ip address 10.176.160.46 255.255.255.248
+ ip verify unicast source reachable-via any
+!
+interface Vlan2637
+ description eAG00002
+ ip vrf forwarding VRF_4G_OAM
+ ip address 10.186.160.46 255.255.255.248
+ ip verify unicast source reachable-via any
+!
+interface Vlan2652
+ description 3AG002
+ ip vrf forwarding 3G
+ ip address 10.128.129.94 255.255.255.248
+ ip verify unicast source reachable-via any
+!
+interface Vlan3888
+ ip unnumbered Loopback0
+ ip pim passive
+!
+router ospf 8
+ router-id 10.217.96.17
+ max-metric router-lsa on-startup wait-for-bgp
+ ispf
+ auto-cost reference-bandwidth 1000000
+ timers throttle spf 5 50 5000
+ timers throttle lsa 0 20 5000
+ timers lsa arrival 15
+ timers pacing lsa-group 10
+ timers pacing flood 5
+ timers pacing retransmission 10
+ passive-interface Loopback0
+ network 10.217.64.74 0.0.0.0 area 2
+ network 10.217.64.77 0.0.0.0 area 2
+ network 10.217.96.17 0.0.0.0 area 2
+ bfd all-interfaces
+ mpls ldp sync
+!
+router bgp 7552
+ bgp router-id 10.217.96.17
+ bgp log-neighbor-changes
+ neighbor SRT_TO_AGG peer-group
+ neighbor SRT_TO_AGG remote-as 7552
+ neighbor SRT_TO_AGG password 7 044D02031B354942291400030004
+ neighbor SRT_TO_AGG update-source Loopback0
+ neighbor 10.217.127.3 peer-group SRT_TO_AGG
+ neighbor 10.217.127.4 peer-group SRT_TO_AGG
+ !
+ address-family ipv4
+  network 10.217.96.17 mask 255.255.255.255 route-map COMMUNITY_SRT_LOOPBACK0
+  network 10.217.112.17 mask 255.255.255.255 route-map COMMUNITY_SRT_PTP
+  neighbor SRT_TO_AGG send-community both
+  neighbor SRT_TO_AGG send-label
+  neighbor 10.217.127.3 activate
+  neighbor 10.217.127.4 activate
+ exit-address-family
+ !
+ address-family vpnv4
+  neighbor SRT_TO_AGG send-community both
+  neighbor 10.217.127.3 activate
+  neighbor 10.217.127.4 activate
+ exit-address-family
+ !
+ address-family vpnv6
+  neighbor SRT_TO_AGG send-community both
+  neighbor 10.217.127.3 activate
+  neighbor 10.217.127.4 activate
+ exit-address-family
+ !
+ address-family rtfilter unicast
+  neighbor SRT_TO_AGG send-community both
+  neighbor 10.217.127.3 activate
+  neighbor 10.217.127.4 activate
+ exit-address-family
+ !
+ address-family ipv4 vrf 3G
+  network 10.128.129.88 mask 255.255.255.248 route-map COMMUNITY_SRT_DD
+  network 10.130.129.88 mask 255.255.255.248 route-map COMMUNITY_SRT_DD
+ exit-address-family
+ !
+ address-family ipv4 vrf BIDV_AGG
+  network 172.31.137.8 mask 255.255.255.248 route-map COMMUNITY_SRT_L3VPN
+ exit-address-family
+ !
+ address-family ipv4 vrf L3VPN_AC_BANK
+  network 172.16.35.4 mask 255.255.255.252 route-map COMMUNITY_SRT_L3VPN
+ exit-address-family
+ !
+ address-family ipv4 vrf NMS
+  network 10.217.104.17 mask 255.255.255.255 route-map COMMUNITY_SRT_NMS
+ exit-address-family
+ !
+ address-family ipv4 vrf VPN_MEKONG_BANK
+  network 10.17.0.80 mask 255.255.255.252 route-map COMMUNITY_SRT_L3VPN
+ exit-address-family
+ !
+ address-family ipv4 vrf VRF_4G_OAM
+  network 10.186.160.40 mask 255.255.255.248 route-map COMMUNITY_SRT_NMS
+ exit-address-family
+ !
+ address-family ipv4 vrf VRF_4G_Service
+  network 10.176.160.40 mask 255.255.255.248 route-map COMMUNITY_SRT_4G
+ exit-address-family
+ !
+ address-family ipv4 vrf VRF_NMS_SWL2_DSLAM
+  network 10.239.224.16 mask 255.255.255.248 route-map COMMUNITY_SRT_NMS
+ exit-address-family
+ !
+ address-family ipv4 vrf VRF_SMARTCABINET
+  network 10.234.102.56 mask 255.255.255.252 route-map COMMUNITY_SRT_NMS
+  network 10.234.111.4 mask 255.255.255.252 route-map COMMUNITY_SRT_NMS
+ exit-address-family
+ !
+ address-family ipv4 vrf VRF_VOD_MSN
+  network 10.214.164.64 mask 255.255.255.192 route-map COMMUNITY_SRT_CD_TH
+  network 100.115.11.0 mask 255.255.255.0 route-map COMMUNITY_SRT_CD_TH
+ exit-address-family
+ !
+ address-family ipv4 vrf own_tntechctcp1
+  network 172.31.177.64 mask 255.255.255.252 route-map COMMUNITY_SRT_L3VPN
+ exit-address-family
+!
+ip forward-protocol nd
+!
+ip bgp-community new-format
+!
+ip ftp source-interface Loopback1
+ip ftp username internet_core
+ip ftp password 7 11584B5643475D0D24
+no ip http server
+no ip http secure-server
+ip tftp source-interface Loopback1
+ip pim ssm range SSM_RANGE_GLOBAL
+ip pim vrf VOD ssm range SSM_RANGE
+ip pim vrf VRF_VOD_MSN ssm range SSM_RANGE_GLOBAL
+ip mroute vrf VOD 10.63.2.0 255.255.255.0 fallback-lookup global
+ip mroute vrf VOD 10.63.1.0 255.255.255.224 fallback-lookup global
+ip mroute vrf VRF_VOD_MSN 172.23.6.96 255.255.255.224 fallback-lookup global
+ip mroute vrf VRF_VOD_MSN 172.23.33.128 255.255.255.224 fallback-lookup global
+ip mroute vrf VRF_VOD_MSN 172.23.50.0 255.255.255.0 fallback-lookup global
+ip mroute vrf VRF_VOD_MSN 10.63.2.0 255.255.255.0 fallback-lookup global
+ip route vrf 3G 10.130.129.88 255.255.255.248 10.128.129.89 name 3AG002
+!
+ip access-list standard PERMIT_SSH_TELNET
+ permit 10.255.58.201
+ permit 10.60.5.46
+ permit 10.60.5.45
+ permit 10.60.5.24
+ permit 10.40.17.1
+ permit 10.60.97.100
+ permit 10.40.17.10
+ permit 10.59.115.2
+ permit 10.207.59.190
+ permit 10.74.25.27
+ permit 10.74.25.26
+ permit 10.60.97.4
+ permit 10.255.59.171
+ permit 10.42.66.10
+ permit 10.42.66.11
+ permit 10.42.66.12
+ permit 10.60.227.161
+ permit 10.73.225.213
+ permit 10.60.227.162
+ permit 10.60.97.44
+ permit 10.59.248.74
+ permit 10.58.137.60
+ permit 10.58.137.55
+ permit 10.74.225.49
+ permit 10.58.137.42
+ permit 10.60.7.166
+ permit 10.60.7.172
+ permit 10.74.224.1
+ permit 10.60.7.148
+ permit 10.60.7.150
+ permit 10.60.7.157
+ permit 192.168.176.111
+ permit 10.60.7.142
+ permit 10.41.232.9
+ permit 10.60.97.148
+ permit 10.58.137.125
+ permit 10.58.137.126
+ permit 10.60.129.125
+ permit 10.41.232.1
+ permit 10.60.129.122
+ permit 192.168.131.50
+ permit 10.58.71.149
+ permit 10.74.225.66
+ permit 192.168.176.48
+ permit 10.58.65.152
+ permit 10.255.59.39
+ permit 10.58.137.83
+ permit 10.255.59.36
+ permit 10.255.58.36
+ permit 10.255.58.35
+ permit 10.255.59.35
+ permit 10.255.59.60
+ permit 10.60.7.196
+ permit 10.58.65.137
+ permit 10.58.71.141
+ permit 10.255.58.51
+ permit 10.60.129.74
+ permit 10.60.129.73
+ permit 10.58.65.174 0.0.0.1
+ permit 10.60.87.52 0.0.0.3
+ permit 10.255.59.40 0.0.0.7
+ permit 10.255.59.48 0.0.0.7
+ permit 10.255.59.56 0.0.0.3
+ permit 10.58.137.122 0.0.0.1
+ permit 10.60.7.12 0.0.0.1
+ permit 10.60.7.200 0.0.0.7
+ permit 10.60.7.216 0.0.0.7
+ permit 10.60.7.224 0.0.0.15
+ permit 10.60.96.218 0.0.0.1
+ permit 192.168.176.42 0.0.0.1
+ permit 10.58.137.48 0.0.0.1
+ permit 10.58.137.56 0.0.0.3
+ permit 10.58.65.130 0.0.0.1
+ permit 10.60.7.192 0.0.0.3
+ permit 10.255.58.52 0.0.0.1
+ permit 10.60.131.76 0.0.0.1
+ permit 10.60.97.0 0.0.0.3
+ permit 10.60.97.40 0.0.0.3
+ permit 10.60.97.112 0.0.0.15
+ permit 10.205.33.184 0.0.0.7
+ permit 10.205.33.176 0.0.0.15
+ permit 10.205.35.0 0.0.0.63
+ permit 10.60.232.112 0.0.0.15
+ permit 10.60.232.128 0.0.0.63
+ permit 10.60.97.96 0.0.0.31
+ permit 10.255.59.96 0.0.0.31
+ permit 10.205.68.0 0.0.0.31
+ permit 10.254.139.144 0.0.0.7
+ permit 10.42.66.10 0.0.0.1
+ permit 10.60.129.72 0.0.0.3
+ permit 10.60.97.0 0.0.0.255
+ip access-list standard SNMP_PERMIT
+ permit 10.207.59.190
+ permit 10.73.224.64 0.0.0.15
+ permit 10.73.225.160 0.0.0.31
+ permit 10.74.225.96 0.0.0.31
+ permit 10.60.80.0 0.0.0.63
+ permit 192.168.251.0 0.0.0.31
+ permit 10.205.33.176 0.0.0.15
+ permit 10.205.35.0 0.0.0.63
+ permit 10.60.232.112 0.0.0.15
+ permit 10.60.232.128 0.0.0.63
+ permit 10.205.68.0 0.0.0.31
+ permit 10.56.32.192 0.0.0.15
+ip access-list standard SSM_RANGE
+ permit 239.2.0.0 0.0.0.127
+ permit 239.2.0.128 0.0.0.63
+ permit 239.2.1.0 0.0.0.127
+ permit 239.2.1.128 0.0.0.63
+ip access-list standard SSM_RANGE_10.63.1.12
+ permit 239.1.0.0 0.0.3.255
+ip access-list standard SSM_RANGE_10.63.1.6
+ permit 239.2.0.100
+ permit 239.2.0.0 0.0.0.63
+ permit 239.1.0.0 0.0.3.255
+ip access-list standard SSM_RANGE_10.63.1.9
+ permit 239.1.0.0 0.0.3.255
+ permit 239.2.0.60 0.0.0.3
+ permit 239.2.0.64 0.0.0.63
+ permit 239.2.0.128 0.0.0.127
+ip access-list standard SSM_RANGE_172.23.50.3
+ permit 239.12.252.0 0.0.0.63
+ip access-list standard SSM_RANGE_172.23.50.4
+ permit 239.12.252.64 0.0.0.63
+ip access-list standard SSM_RANGE_172.23.50.5
+ permit 239.12.251.0 0.0.0.255
+ip access-list standard SSM_RANGE_172.23.51.3
+ permit 239.12.252.128 0.0.0.63
+ip access-list standard SSM_RANGE_172.23.51.4
+ permit 239.12.252.192 0.0.0.63
+ip access-list standard SSM_RANGE_172.23.6.102
+ permit 239.12.1.0 0.0.0.7
+ip access-list standard SSM_RANGE_172.23.6.105
+ permit 239.12.1.8 0.0.0.7
+ip access-list standard SSM_RANGE_172.23.6.134
+ permit 239.12.1.16 0.0.0.7
+ip access-list standard SSM_RANGE_GLOBAL
+ permit 239.2.0.0 0.0.0.127
+ permit 239.2.0.128 0.0.0.63
+ permit 239.2.1.0 0.0.0.127
+ permit 239.2.1.128 0.0.0.63
+ permit 239.12.252.0 0.0.0.255
+ permit 239.12.251.0 0.0.0.255
+ permit 239.12.1.0 0.0.0.7
+ permit 239.12.1.8 0.0.0.7
+ permit 239.12.1.16 0.0.0.7
+!
+ip sla 13
+ udp-jitter 10.242.131.1 55000 source-ip 10.217.96.17
+ request-data-size 160
+ tos 184
+ verify-data
+ frequency 30
+ip sla schedule 13 life forever start-time now
+ip sla 14
+ udp-jitter 10.242.131.2 55000 source-ip 10.217.96.17
+ request-data-size 160
+ tos 184
+ verify-data
+ frequency 30
+ip sla schedule 14 life forever start-time now
+logging history size 300
+logging history debugging
+logging trap notifications
+logging facility syslog
+logging source-interface Loopback1 vrf NMS
+logging host 10.73.224.65 vrf NMS
+logging host 10.73.224.68 vrf NMS
+logging host 10.73.225.166 vrf NMS
+logging host 10.73.225.168 vrf NMS
+logging host 10.73.225.169 vrf NMS
+logging host 10.73.225.170 vrf NMS
+logging host 10.73.225.171 vrf NMS
+logging host 10.73.225.179 vrf NMS
+logging host 10.73.225.180 vrf NMS
+logging host 10.73.225.181 vrf NMS
+logging host 10.74.225.115 vrf NMS
+logging host 10.74.225.116 vrf NMS
+logging host 10.60.80.2 vrf NMS
+logging host 10.60.80.3 vrf NMS
+logging host 10.60.80.4 vrf NMS
+logging host 10.60.80.5 vrf NMS
+logging host 10.60.80.6 vrf NMS
+logging host 10.60.80.7 vrf NMS
+logging host 10.60.80.8 vrf NMS
+logging host 10.60.80.9 vrf NMS
+logging host 10.74.225.106 vrf NMS
+logging host 10.74.225.107 vrf NMS
+logging host 10.74.225.108 vrf NMS
+logging host 10.74.225.109 vrf NMS
+logging host 10.74.225.110 vrf NMS
+logging host 10.205.68.202 vrf NMS
+!
+route-map COMMUNITY_SRT_DD permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2002
+!
+route-map COMMUNITY_SRT_LOOPBACK0 permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2000
+!
+route-map COMMUNITY_SRT_L3VPN permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2007
+!
+route-map COMMUNITY_SRT_CD_TH permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2003
+!
+route-map COMMUNITY_SRT_PTP permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2008
+!
+route-map COMMUNITY_SRT_NMS permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2010
+!
+route-map COMMUNITY_SRT_4G permit 100
+ set local-preference 3000
+ set community 7552:75 7552:800 7552:2005
+!
+snmp-server community METRO_KV3_2016 RO SNMP_PERMIT
+snmp-server trap-source Loopback1
+snmp-server location VIETTEL
+snmp-server enable traps snmp authentication linkdown linkup coldstart warmstart
+snmp-server enable traps vrrp
+snmp-server enable traps pfr
+snmp-server enable traps ds1
+snmp-server enable traps transceiver all
+snmp-server enable traps call-home message-send-fail server-fail
+snmp-server enable traps eigrp
+snmp-server enable traps tty
+snmp-server enable traps ospf state-change
+snmp-server enable traps ospf errors
+snmp-server enable traps ospf retransmit
+snmp-server enable traps ospf lsa
+snmp-server enable traps ospf cisco-specific state-change nssa-trans-change
+snmp-server enable traps ospf cisco-specific state-change shamlink interface
+snmp-server enable traps ospf cisco-specific state-change shamlink neighbor
+snmp-server enable traps ospf cisco-specific errors
+snmp-server enable traps ospf cisco-specific retransmit
+snmp-server enable traps ospf cisco-specific lsa
+snmp-server enable traps bfd
+snmp-server enable traps bgp
+snmp-server enable traps bgp cbgp2
+snmp-server enable traps config-copy
+snmp-server enable traps config
+snmp-server enable traps config-ctid
+snmp-server enable traps dhcp
+snmp-server enable traps event-manager
+snmp-server enable traps hsrp
+snmp-server enable traps ipmulticast
+snmp-server enable traps isis
+snmp-server enable traps mpls rfc ldp
+snmp-server enable traps mpls ldp
+snmp-server enable traps mpls rfc traffic-eng
+snmp-server enable traps mpls traffic-eng
+snmp-server enable traps mpls fast-reroute protected
+snmp-server enable traps msdp
+snmp-server enable traps ospfv3 state-change
+snmp-server enable traps ospfv3 errors
+snmp-server enable traps slb real virtual csrp
+snmp-server enable traps aaa_server
+snmp-server enable traps memory bufferpeak
+snmp-server enable traps fru-ctrl
+snmp-server enable traps entity
+snmp-server enable traps mvpn
+snmp-server enable traps cpu threshold
+snmp-server enable traps pw vc
+snmp-server enable traps rsvp
+snmp-server enable traps ipsla
+snmp-server enable traps l2tun session
+snmp-server enable traps l2tun pseudowire status
+snmp-server enable traps netsync
+snmp-server enable traps flash insertion removal
+snmp-server enable traps ima
+snmp-server enable traps envmon
+snmp-server enable traps ethernet cfm cc mep-up mep-down cross-connect loop config
+snmp-server enable traps ethernet cfm crosscheck mep-missing mep-unknown service-up
+snmp-server enable traps ether-oam
+snmp-server enable traps rep
+snmp-server enable traps bridge newroot topologychange
+snmp-server enable traps stpx inconsistency root-inconsistency loop-inconsistency
+snmp-server enable traps vlancreate
+snmp-server enable traps vlandelete
+snmp-server enable traps license
+snmp-server enable traps cef resource-failure peer-state-change peer-fib-state-change inconsistency
+snmp-server enable traps nhrp nhs
+snmp-server enable traps nhrp nhc
+snmp-server enable traps nhrp nhp
+snmp-server enable traps nhrp quota-exceeded
+snmp-server enable traps ip local pool
+snmp-server enable traps gdoi gm-start-registration
+snmp-server enable traps gdoi gm-registration-complete
+snmp-server enable traps gdoi gm-re-register
+snmp-server enable traps gdoi gm-rekey-rcvd
+snmp-server enable traps gdoi gm-rekey-fail
+snmp-server enable traps gdoi ks-rekey-pushed
+snmp-server enable traps gdoi gm-incomplete-cfg
+snmp-server enable traps gdoi ks-no-rsa-keys
+snmp-server enable traps gdoi ks-new-registration
+snmp-server enable traps gdoi ks-reg-complete
+snmp-server enable traps ike policy add
+snmp-server enable traps ike policy delete
+snmp-server enable traps ike tunnel start
+snmp-server enable traps ike tunnel stop
+snmp-server enable traps ipsec cryptomap add
+snmp-server enable traps ipsec cryptomap delete
+snmp-server enable traps ipsec cryptomap attach
+snmp-server enable traps ipsec cryptomap detach
+snmp-server enable traps ipsec tunnel start
+snmp-server enable traps ipsec tunnel stop
+snmp-server enable traps ipsec too-many-sas
+snmp-server enable traps bulkstat collection transfer
+snmp-server enable traps mpls vpn
+snmp-server enable traps mpls rfc vpn
+snmp-server enable traps vrfmib vrf-up vrf-down vnet-trunk-up vnet-trunk-down
+snmp-server enable traps ethernet cfm alarm
+snmp-server host 10.205.68.1 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.205.68.2 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.205.68.3 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.205.68.4 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.205.68.5 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.2 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.3 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.4 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.5 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.6 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.7 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.8 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.60.80.9 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.224.68 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.224.69 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.224.70 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.111 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.112 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.166 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.168 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.169 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.170 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.171 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.179 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.180 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.73.225.181 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.100 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.101 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.102 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.103 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.104 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.105 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.106 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.107 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.108 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.109 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.110 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.111 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.112 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.113 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 10.74.225.50 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 192.168.182.5 vrf NMS version 2c METRO_KV3_2016 
+snmp-server host 192.168.95.242 vrf NMS version 2c METRO_KV3_2016 
+snmp ifmib ifindex persist
+mpls ldp router-id Loopback0 force
+!
+!
+!
+!
+ipv6 access-list DENY_ANY
+ deny ipv6 any any
+!
+control-plane
+!
+environment monitor
+!
+line con 0
+ exec-timeout 0 0
+ privilege level 15
+ password 7 111F100003060E00
+ logging synchronous
+line vty 0 4
+ access-class PERMIT_SSH_TELNET in vrf-also
+ exec-timeout 15 0
+ privilege level 15
+ password 7 1058001C11031707
+ ipv6 access-class DENY_ANY in
+ logging synchronous
+line vty 5 14
+ access-class PERMIT_SSH_TELNET in vrf-also
+ exec-timeout 15 0
+ privilege level 15
+ ipv6 access-class DENY_ANY in
+ logging synchronous
+!
+exception crashinfo buffersize 128
+network-clock synchronization automatic
+network-clock synchronization mode QL-enabled
+network-clock input-source 5 interface ToP0/12
+network-clock revertive 
+ntp logging
+ntp source Loopback0
+ntp update-calendar
+ntp server 10.217.127.3 prefer
+ntp server 10.217.127.4
+!
+ptp clock ordinary domain 4 
+ time-properties handset timeScaleFALSE currentUtcOffsetValidFALSE leap59FALSE leap61FALSE 36
+ clock-port Slave slave profile g8265.1
+  transport ipv4 unicast interface Lo2 negotiation
+  clock source 10.242.130.90 1
+  clock source 10.242.130.102 2
+!
+event manager applet MODIFY_BCM_REGISTERS
+ event syslog pattern "%SYS-5-RESTART" maxrun 300
+ action 1.0   cli command "enable"
+ action 2.0   wait 60
+ action 3.0   cli command "test platform bcm shell" pattern "BCM>"
+ action 3.1   cli command "modreg OP_QUEUE_CONFIG_CELL(0).xe0 Q_SHARED_LIMIT_CELL=3" pattern "BCM>"
+ action 3.2   cli command "modreg OP_QUEUE_CONFIG_CELL(0).xe1 Q_SHARED_LIMIT_CELL=3" pattern "BCM>"
+ action 3.541 cli command "modreg OP_QUEUE_CONFIG_PACKET(2).ge8 Q_LIMIT_DYNAMIC_PACKET=0" pattern "BCM>"
+ action 3.542 cli command "modreg OP_QUEUE_CONFIG_PACKET(2).ge8 Q_SHARED_LIMIT_PACKET=0x0F51" pattern "BCM>"
+ action 3.543 cli command "modreg OP_QUEUE_CONFIG_CELL(2).ge8 Q_LIMIT_DYNAMIC_CELL=0" pattern "BCM>"
+ action 3.544 cli command "modreg OP_QUEUE_CONFIG_CELL(2).ge8 Q_SHARED_LIMIT_CELL=0x28BA" pattern "BCM>"
+ action 3.545 cli command "modreg OP_QUEUE_CONFIG_PACKET(3).ge8 Q_LIMIT_DYNAMIC_PACKET=0" pattern "BCM>"
+ action 3.546 cli command "modreg OP_QUEUE_CONFIG_PACKET(3).ge8 Q_SHARED_LIMIT_PACKET=0x0F51" pattern "BCM>"
+ action 3.547 cli command "modreg OP_QUEUE_CONFIG_CELL(3).ge8 Q_LIMIT_DYNAMIC_CELL=0" pattern "BCM>"
+ action 3.548 cli command "modreg OP_QUEUE_CONFIG_CELL(3).ge8 Q_SHARED_LIMIT_CELL=0x28BA" pattern "BCM>"
+ action 90.0  cli command "quit" pattern "#"
+ action 91.0  cli command "exit"
+!
+end
+
+AGG0002SRT02#show processes cpu | include CPU
+CPU utilization for five seconds: 77%/0%; one minute: 10%; five minutes: 5%
+AGG0002SRT02#show memory statistics
+                Head    Total(b)     Used(b)     Free(b)   Lowest(b)  Largest(b)
+Processor    ADABD80   220545664   137644928    82900736    82134632    81213556
+      I/O   18000000   134217728    30722116   103495612   102972688   102933564
+AGG0002SRT02#end
+Translating "end"
+
+Translating "end"
+
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#end
+Translating "end"
+
+Translating "end"
+
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.23.50.3 172.23.50.3
+AGG0002SRT02#end
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.23.50.4 172.23.50.4
+AGG0002SRT02#end
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.24.28.141 172.24.28.141
+AGG0002SRT02#end
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.24.28.142 172.24.28.142
+AGG0002SRT02#end
+Translating "end"
+
+Translating "end"
+
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+AGG0002SRT02(config)#ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.50.3 172.23.50.3
+AGG0002SRT02(config)#end
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.23.50.3 172.23.50.3
+AGG0002SRT02#end
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+AGG0002SRT02(config)#ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.23.50.4 172.23.50.4
+AGG0002SRT02(config)#end
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.23.50.4 172.23.50.4
+AGG0002SRT02#end
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+AGG0002SRT02(config)#ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.24.28.141 172.24.28.141
+AGG0002SRT02(config)#end
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.24.28.141 172.24.28.141
+AGG0002SRT02#end
+Translating "end"
+
+Translating "end"
+
+% Bad IP address or host name% Unknown command or computer name, or unable to find computer address
+AGG0002SRT02#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+AGG0002SRT02(config)#ip igmp vrf VRF_VOD_MSN ssm-map static SSM_RANGE_172.24.28.142 172.24.28.142
+AGG0002SRT02(config)#end
+AGG0002SRT02#show running-config | include ip igmp vrf VRF_VOD_MSN ssm-map static  SSM_RANGE_172.24.28.142 172.24.28.142
+AGG0002SRT02#

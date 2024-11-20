@@ -1,0 +1,46 @@
+let counter = 0; // Bộ đếm số lần lặp
+
+const interval = setInterval(() => {
+    // Nhấn nút đầu tiên
+    var button1 = document.querySelector('.p-button.p-component.p-button-rounded.p-button-text.p-button-success.p-mr-1.p-button-icon-only');
+    if (button1) {
+        button1.click();
+	}
+    // Mở dropdown
+    var dropdownTrigger = document.querySelector('#monitor .p-dropdown-trigger');
+    if (dropdownTrigger) {
+        dropdownTrigger.click();
+    }
+
+    // Chờ dropdown mở và chọn "Yes" trong danh sách
+    setTimeout(() => {
+        const items = document.querySelectorAll('.p-dropdown-item');
+        items.forEach(item => {
+            if (item.innerText === 'Yes') {
+                item.click(); // Nhấn vào "Yes"
+            }
+        });
+    }, 1000);
+
+    // Nhấn nút có icon
+    setTimeout(() => {
+    var button2 = document.querySelector('.p-button-icon.p-c.pi.pi-check.p-button-icon-left');
+    if (button2) {
+        button2.click();
+    }
+    }, 1000);
+
+    // Nhấn nút có search
+    setTimeout(() => {
+    var button2 = document.querySelector('.p-button-icon.p-c.pi.pi-search.p-button-icon-left');
+    if (button2) {
+        button2.click();
+    }
+    }, 1000);
+
+    // Tăng bộ đếm và dừng khi đạt 200 lần
+    counter++;
+    if (counter >= 200) {
+        clearInterval(interval); // Dừng lặp sau 200 lần
+    }
+}, 4000); // Lặp lại sau mỗi 2 giây
