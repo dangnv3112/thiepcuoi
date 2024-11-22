@@ -1,0 +1,445 @@
+/* title-font */
+@font-face {
+    font-family: title-font;
+    src: url(../font/SVN-Ginger.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: title-font2;
+    src: url(../font/title-font/BeautiqueDisplay-Medium.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: title-font3;
+    src: url(../font/title-font/SVN-RollgatesLuxury.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: title-font4;
+    src: url(../font/title-font/SVN-Tioxo\ Sans.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: title-font5;
+    src: url(../font/title-font/Kanit-Medium.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: title-font6;
+    src: url(../font/title-font/Oswald-Medium.ttf);
+    font-weight: 400;
+}
+
+
+/* script font */
+@font-face {
+    font-family: script-font;
+    src: url(../font/SVN-Amstirdam.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: script-font2;
+    src: url(../font/SVN-Ameyallinda-Signature.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: script-font3;
+    src: url(../font/SVN-Rustling-Sound.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: script-font4;
+    src: url(../font/SVN-Clodia.otf);
+    font-weight: 400;
+}
+/* main font */
+@font-face {
+    font-family: main-font;
+    src: url(../font/SVN-Gilroy\ Regular.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: main-font;
+    src: url(../font/SVN-Gilroy\ Medium.otf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: main-font;
+    src: url(../font/SVN-Gilroy\ Bold.otf);
+    font-weight: 700;
+}
+/* -------------- */
+@font-face {
+    font-family: main-font2;
+    src: url(../font/main-font/JosefinSans-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: main-font2;
+    src: url(../font/main-font/JosefinSans-Medium.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: main-font2;
+    src: url(../font/main-font/JosefinSans-Bold.ttf);
+    font-weight: 700;
+}
+/* --------------- */
+/* -------------- */
+@font-face {
+    font-family: main-font3;
+    src: url(../font/main-font/BT-BeauSans-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: main-font3;
+    src: url(../font/main-font/BT-BeauSans-Medium.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: main-font3;
+    src: url(../font/main-font/BT-BeauSans-Bold.ttf);
+    font-weight: 700;
+}
+/* --------------- */
+/* -------------- */
+@font-face {
+    font-family: main-font4;
+    src: url(../font/main-font/Quicksand-Regular.ttf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: main-font4;
+    src: url(../font/main-font/Quicksand-Medium.ttf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: main-font4;
+    src: url(../font/main-font/Quicksand-Bold.ttf);
+    font-weight: 700;
+}
+/* --------------- */
+
+/* font family */
+.title-font {
+    font-family: var(--title-font);
+}
+.script-font {
+    font-family: var(--script-font);
+}
+.main-font {
+    font-family: var(--main-font);
+}
+
+
+
+body {
+    font-family: var(--main-font);
+}
+
+/* Text color  */
+
+.text-primary-color {
+    color: var(--primary-color) !important;
+}
+.text-secondary-color {
+    color: var(--secondary-color);
+}
+.text-soft-primary {
+    color: var(--soft-primary) !important;
+}
+.text-black-100 {
+    color: var(--text-black) !important;
+}
+/* BACKGROUND */
+.bg-none {
+    background: transparent !important;
+}
+.bg-primary-color {
+    background: var(--primary-color);
+}
+.bg-soft-primary {
+    background: var(--soft-primary);
+}
+.uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-3xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+}
+.blur-bg {
+	-webkit-backdrop-filter: blur(5px);
+  	backdrop-filter: blur(5px);
+}
+.blur-bg-large {
+	-webkit-backdrop-filter: blur(10px);
+  	backdrop-filter: blur(10px);
+}
+.blur {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+.blur-dark-bg-large{
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.bg-gradient-primary {
+    background:-webkit-linear-gradient(to right top, var(--primary-color), var(--secondary-color));
+    background-image: linear-gradient(to right top, var(--primary-color), var(--secondary-color));
+}
+.bg-gradient1{
+    background: linear-gradient(180deg, #FFB7B7 0%, #727272 100%), radial-gradient(60.91% 100% at 50% 0%, #FFD1D1 0%, #260000 100%), linear-gradient(238.72deg, #FFDDDD 0%, #720066 100%), linear-gradient(127.43deg, #00FFFF 0%, #FF4444 100%), radial-gradient(100.22% 100% at 70.57% 0%, #FF0000 0%, #00FFE0 100%), linear-gradient(127.43deg, #B7D500 0%, #3300FF 100%);
+background-blend-mode: screen, overlay, hard-light, color-burn, color-dodge, normal;
+}
+.bg-gradient2{
+    background: radial-gradient(50% 123.47% at 50% 50%, #00FF94 0%, #720059 100%), linear-gradient(121.28deg, #669600 0%, #FF0000 100%), linear-gradient(360deg, #0029FF 0%, #8FFF00 100%), radial-gradient(100% 164.72% at 100% 100%, #6100FF 0%, #00FF57 100%), radial-gradient(100% 148.07% at 0% 0%, #FFF500 0%, #51D500 100%);
+background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+.bg-gradient3 {
+    background: radial-gradient(80.99% 100% at 50% 0%, #00FF0A 0%, #36008E 100%), radial-gradient(50% 123.47% at 50% 50%, #EFE7C8 0%, #36008E 100%), linear-gradient(301.28deg, #FF006B 0%, #48DD9E 100%), linear-gradient(294.84deg, #5A60E4 0%, #D30000 100%), linear-gradient(52.29deg, #000000 0%, #00FF85 100%), radial-gradient(100% 138.69% at 100% 0%, #0007A5 0%, #FF7A00 100%), radial-gradient(70.41% 100% at 50% 0%, #D5B300 0%, #2200AA 100%);
+background-blend-mode: screen, screen, lighten, overlay, lighten, difference, normal;
+}
+.bg-gradient4{
+background: #ffe9fb; background: -moz-linear-gradient(45deg,  #ffe9fb 0%,#e4fef6 100%); background: -webkit-linear-gradient(45deg,  #ffe9fb 0%,#e4fef6 100%); background: linear-gradient(45deg,  #ffe9fb 0%,#e4fef6 100%);
+}
+.overlay-gradient {
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4) 100%);
+}
+.bg-overlay-white {
+    background: rgba(255, 255, 255, 0.253) !important;
+}
+.bg-overlay-black {
+    background: rgb(0 0 0 / 69%) !important;
+}
+
+/* Boder */
+.border-primary-color {
+    border-color: var(--primary-color) !important;
+}
+.border-soft-primary {
+    border-color: var(--soft-primary) !important;
+}
+
+/* BUTTON */
+
+.btn-primary-color {
+    background: var(--primary-color);
+}
+.btn-primary-color:hover {
+    background: var(--primary-hover) !important;
+}
+.btn-soft-primary {
+    background: var(--soft-primary-color);
+    color: var(--primary-color);
+}
+.btn-outline-light {
+    border: 1px solid rgb(198, 198, 198);
+    color: rgb(198, 198, 198);
+    background: none;
+}
+
+.btn-outline-light:hover {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    background: none !important;
+}
+.btn-outline-primary-color {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color) !important;
+    background: none;
+}
+.btn-outline-primary-color:hover {
+    border-color: var(--primary-hover);
+    color: var(--primary-hover) !important;
+}
+/* Slide show uikit nav style */
+.nav-slide-style1 {
+    
+}
+.nav-slide-style1 li a{
+    width: 20px;
+    height: 6px;
+    border-radius: 2px !important;
+    border: none;
+    background-color: white !important;
+}
+
+.nav-slide-style1 li.uk-active a {
+    background-color: var(--primary-color) !important;
+}
+/* end Slide show uikit nav style */
+
+
+
+/* AMINATION */
+.kenburns-top {
+    -webkit-animation: kenburns-top 10s ease-out infinite both;
+    animation: kenburns-top 10s ease-out infinite both
+}
+
+@-webkit-keyframes kenburns-top {
+    0% {
+        -webkit-transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0);
+        -webkit-transform-origin: 50% 16%;
+        transform-origin: 50% 16%
+    }
+
+    100% {
+        -webkit-transform: scale(1.25) translateY(-15px);
+        transform: scale(1.25) translateY(-15px);
+        -webkit-transform-origin: top;
+        transform-origin: top
+    }
+}
+
+@keyframes kenburns-top {
+    0% {
+        -webkit-transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0);
+        -webkit-transform-origin: 50% 16%;
+        transform-origin: 50% 16%
+    }
+
+    100% {
+        -webkit-transform: scale(1.25) translateY(-15px);
+        transform: scale(1.25) translateY(-15px);
+        -webkit-transform-origin: top;
+        transform-origin: top
+    }
+}
+
+.tracking-in-expand {
+    -webkit-animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.heartbeat {
+	-webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+	        animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+ @-webkit-keyframes heartbeat {
+    from {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    10% {
+      -webkit-transform: scale(0.91);
+              transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    17% {
+      -webkit-transform: scale(0.98);
+              transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    33% {
+      -webkit-transform: scale(0.87);
+              transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    45% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+  }
+  @keyframes heartbeat {
+    from {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-transform-origin: center center;
+              transform-origin: center center;
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    10% {
+      -webkit-transform: scale(0.91);
+              transform: scale(0.91);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    17% {
+      -webkit-transform: scale(0.98);
+              transform: scale(0.98);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+    33% {
+      -webkit-transform: scale(0.87);
+              transform: scale(0.87);
+      -webkit-animation-timing-function: ease-in;
+              animation-timing-function: ease-in;
+    }
+    45% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      -webkit-animation-timing-function: ease-out;
+              animation-timing-function: ease-out;
+    }
+  }
+  
+/* ========= AND ANIMATION ========== */
+
+
+/* SWIPER SLIDE */
+
+.swiper-3d-coverflow-effect .swiper-slide {
+    max-width: 75%;
+  }
+  @media only screen and (min-width: 600px) {
+    .swiper-3d-coverflow-effect .swiper-slide {
+      max-width: 50%;
+    }
+  }
+  @media only screen and (min-width: 960px) {
+    .swiper-3d-coverflow-effect .swiper-slide {
+      max-width: 35%;
+    }
+  }
+  @media only screen and (min-width: 1280px) {
+    .swiper-3d-coverflow-effect .swiper-slide {
+      max-width:30%;
+    }
+  }
